@@ -1,6 +1,10 @@
 import { Box, Button, Card, Flex, Text, TextField } from "@radix-ui/themes";
+import useDelegate from "../CustomHooks/useDelegate";
+import { useState } from "react";
 
-const DelegateVote = ({ to, handleDelegate }) => {
+const DelegateVote = () => {
+    const [address, setAddress] = useState("")
+    const handleDelegate = useDelegate(address)
     return (
         <Card size="2" style={{ width: 425 }}>
             <Flex gap="" align="center">
@@ -10,9 +14,9 @@ const DelegateVote = ({ to, handleDelegate }) => {
                             <Text as="div" size="2" mb="1" weight="bold">
                                 Delegate&apos;s Address
                             </Text>
-                            <TextField.Input placeholder="Enter Delegate's Address" />
+                            <TextField.Input placeholder="Enter Delegate's Address" onChange={(e) => setAddress(e.target.value)}/>
                         </label>
-                        <Button onClick={() => handleDelegate(to)}>
+                        <Button onClick={() => handleDelegate(address)}>
                             Delegate vote
                         </Button>
                     </Flex>

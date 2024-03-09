@@ -30,7 +30,7 @@ const useRightToVote = (address) => {
     } catch(err) {
       console.log(err)
     }
-  })
+  }, [address, chainId, walletProvider]);
 }
 
 export default useRightToVote
