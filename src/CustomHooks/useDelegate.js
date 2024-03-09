@@ -30,12 +30,29 @@ const useDelegate = (address) => {
       console.log("receipt: ", receipt);
 
       if (receipt.status) {
-        return toast.success("delegate successful!");
+        return toast.success("delegate successful!", {
+            position: "top-center",
+          });
       }
 
-      toast("delegate failed!");
+      toast.error("delegate failed!", {
+        position: "top-center",
+      });
     } catch (error) {
-      toast("error: ", error);
+    let errorText;
+      if (error.reason === "You already voted.") {
+        errorText = "You already voted";
+      } else if (error.reason === "Self-delegation is disallowed.") {
+        errorText = "Self-delegation is disallowed";
+      } else if (error.reason === "Found loop in delegation.") {
+        errorText = "Found loop in delegation.";
+      } else {
+        errorText = "An unknown error occured";
+      }
+
+      toast.error(`Error: ${errorText}`, {
+        position: "top-center",
+      });
     }
   }, [address, chainId, walletProvider]);
 };
