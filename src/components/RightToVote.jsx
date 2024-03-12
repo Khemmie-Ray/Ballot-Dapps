@@ -1,5 +1,6 @@
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import useRightToVote from "../CustomHooks/useRightToVote";
+import { useState } from "react";
 
 const RightToVote = () => {
   const [address, setAddress] = useState("")

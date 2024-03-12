@@ -52,7 +52,7 @@ const useDelegate = (address) => {
 
       toast.error(`Error: ${errorText}`, {
         position: "top-center",
-      });
+      });  
     }
   }, [address, chainId, walletProvider]);
 };
